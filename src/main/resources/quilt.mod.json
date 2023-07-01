@@ -8,7 +8,7 @@
 			"name": "Mod Name",
 			"description": "A short description of your mod.",
 			"contributors": {
-				"Your name here": "Owner"
+				"Your name here": "Dakuro"
 			},
 			"contact": {
 				"homepage": "https://example.com/",
@@ -24,15 +24,15 @@
 		"depends": [
 			{
 				"id": "quilt_loader",
-				"versions": ">=0.19.1"
+				"versions": ">=0.19.2-beta.5"
 			},
 			{
 				"id": "quilted_fabric_api",
-				"versions": ">=7.0.2"
+				"versions": ">=7.0.4"
 			},
 			{
 				"id": "minecraft",
-				"versions": ">=1.20"
+				"versions": ">=1.20.1"
 			}
 		]
 	},
