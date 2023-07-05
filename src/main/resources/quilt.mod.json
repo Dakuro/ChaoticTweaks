@@ -1,34 +1,34 @@
 {
 	"schema_version": 1,
 	"quilt_loader": {
-		"group": "com.example",
-		"id": "example_mod",
+		"group": "io.github.dakuro",
+		"id": "modding_training",
 		"version": "${version}",
 		"metadata": {
-			"name": "Mod Name",
-			"description": "A short description of your mod.",
+			"name": "Modding Training",
+			"description": "A mod I developed as a training for myself.",
 			"contributors": {
-				"Your name here": "Dakuro"
+				"Dakuro": "Author"
 			},
 			"contact": {
-				"homepage": "https://example.com/",
-				"issues": "https://github.com/QuiltMC/quilt-template-mod/issues",
-				"sources": "https://github.com/QuiltMC/quilt-template-mod"
+				"homepage": "https://dakuro.github.io/",
+				"issues": "https://github.com/Dakuro/modding-training/issues",
+				"sources": "https://github.com/Dakuro/modding-training"
 			},
-			"icon": "assets/example_mod/icon.png"
+			"icon": "assets/modding_training/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "com.example.example_mod.ExampleMod"
+			"init": "io.github.dakuro.modding_training.ModdingTraining"
 		},
 		"depends": [
 			{
 				"id": "quilt_loader",
-				"versions": ">=0.19.2-beta.5"
+				"versions": ">=0.20.0-beta.2"
 			},
 			{
 				"id": "quilted_fabric_api",
-				"versions": ">=7.0.4"
+				"versions": ">=7.0.5"
 			},
 			{
 				"id": "minecraft",
@@ -36,5 +36,5 @@
 			}
 		]
 	},
-	"mixin": "example_mod.mixins.json"
+	"mixin": "modding_training.mixins.json"
 }
