@@ -15,7 +15,8 @@
 				"issues": "https://github.com/Dakuro/modding-training/issues",
 				"sources": "https://github.com/Dakuro/modding-training"
 			},
-			"icon": "assets/modding_training/icon.png"
+			"icon": "assets/modding_training/icon.png",
+			"license": "MIT"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
