@@ -15,7 +15,7 @@ import java.util.Map;
 public interface CauldronDispenserUtils {
 
 	// Map of BucketItems that can be put inside a cauldron
-	public static HashMap<Item, HashMap<String, Object>> BucketToCauldron = new HashMap<>() {
+	HashMap<Item, HashMap<String, Object>> BucketToCauldron = new HashMap<>() {
 		{
 			put(Items.LAVA_BUCKET, new HashMap<>() {
 				{
@@ -44,7 +44,7 @@ public interface CauldronDispenserUtils {
 	};
 
 	// Map of BottleItems that can be put inside a cauldron
-	public static HashMap<String, HashMap<String, Object>> BottleToCauldron = new HashMap<>(){
+	HashMap<String, HashMap<String, Object>> BottleToCauldron = new HashMap<>(){
 		{
 			String itemID = "minecraft:water";
 			put(itemID, new HashMap<>() {
@@ -62,7 +62,7 @@ public interface CauldronDispenserUtils {
 	};
 
 	// Map of CauldronBlocks that can be emptied by a bucket
-	public static HashMap<Block, Item> CauldronToBucket = new HashMap<>(){
+	HashMap<Block, Item> CauldronToBucket = new HashMap<>(){
 		{
 			for (Map.Entry<Item, HashMap<String, Object>> entry : BucketToCauldron.entrySet()) {
 				put((Block)entry.getValue().get("block"), entry.getKey());
@@ -71,7 +71,7 @@ public interface CauldronDispenserUtils {
 	};
 
 	// Map of CauldronBlocks that can be emptied by a bottle
-	public static HashMap<Block, ItemStack> CauldronToBottle = new HashMap<>(){
+	HashMap<Block, ItemStack> CauldronToBottle = new HashMap<>(){
 		{
 			for (Map.Entry<String, HashMap<String, Object>> entry : BottleToCauldron.entrySet()) {
 				put((Block)entry.getValue().get("block"), (ItemStack)entry.getValue().get("stack"));
@@ -80,7 +80,7 @@ public interface CauldronDispenserUtils {
 	};
 
 	// Determines if a bottle has the required NBT to be put inside a cauldron
-	public static boolean ValidBottle(ItemStack bottle) {
+	static boolean ValidBottle(ItemStack bottle) {
 		if (!bottle.hasNbt()) {
 			return false;
 		} else {
@@ -94,7 +94,7 @@ public interface CauldronDispenserUtils {
 	}
 
 	// Enumeration of the different fluid levels a cauldron can have
-	public enum CauldronLevel {
+	enum CauldronLevel {
 		EMPTY(0), LOW(1), MEDIUM(2), FULL(3);
 
 		private final int value;
@@ -105,7 +105,7 @@ public interface CauldronDispenserUtils {
 	}
 
 	// Used to get the Fluid level of a cauldron
-	public static CauldronLevel GetCauldronLevel(BlockState block_state) {
+	static CauldronLevel GetCauldronLevel(BlockState block_state) {
 		Block block = block_state.getBlock();
 		if (!CauldronToBucket.containsKey(block)) { return CauldronLevel.EMPTY; }
 		if (block == Blocks.CAULDRON) { return CauldronLevel.EMPTY; }
@@ -122,7 +122,7 @@ public interface CauldronDispenserUtils {
 	}
 
 	// Handles Fluid level changes when a bottle is used on a cauldron
-	public static BlockState NewCauldronBottleLevel(Block cauldron_type, BlockState block_state, Boolean increase) {
+	static BlockState NewCauldronBottleLevel(Block cauldron_type, BlockState block_state, Boolean increase) {
 		int cauldron_level = GetCauldronLevel(block_state).value;
 		if (increase) { cauldron_level++; } else { cauldron_level--; }
 		if (cauldron_level >= 3) { cauldron_level = 3; }
