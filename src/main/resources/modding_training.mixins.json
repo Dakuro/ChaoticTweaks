@@ -6,7 +6,8 @@
   "mixins": [
     "ItemDispenserBehaviorMixin",
     "LeveledCauldronBlockMixin",
-    "PowderSnowCauldronBlockMixin"
+    "PowderSnowCauldronBlockMixin",
+    "PowderSnowBlockMixin"
   ],
   "client": [],
   "injectors": {

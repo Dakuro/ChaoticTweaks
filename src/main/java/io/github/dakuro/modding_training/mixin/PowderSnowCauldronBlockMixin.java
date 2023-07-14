@@ -2,12 +2,14 @@ package io.github.dakuro.modding_training.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PowderSnowCauldronBlock;
-import net.minecraft.block.ShapeContext;
 import net.minecraft.block.cauldron.CauldronBehavior;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.EntityTypeTags;
@@ -15,8 +17,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.random.RandomGenerator;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
@@ -39,7 +39,7 @@ public abstract class PowderSnowCauldronBlockMixin extends LeveledCauldronBlockM
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
 		if (this.isEntityTouchingFluid(state, pos, entity)) {
 			if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-				// Prevents entities that can walk on Powder Snow being stuck in cauldron
+				// If an entity cannot walk on Powder Snow, it is stuck in cauldron
 				if (!canWalkOnPowderSnow(entity)) {
 					entity.setMovementMultiplier(state, new Vec3d(0.9F, 1.5, 0.9F));
 				}
@@ -60,24 +60,27 @@ public abstract class PowderSnowCauldronBlockMixin extends LeveledCauldronBlockM
 					}
 				}
 			}
-			entity.setInPowderSnow(true);
+			entity.setInPowderSnow(!canWalkOnPowderSnow(entity));
 		}
 	}
 
-	// Overrides from AbstractBlock to adapt Collision Shape to cauldron
-	@Override
-	public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		return getOutlineShape(state, world, pos, context);
-	}
-
 	// Determines if an entity can walk on Powder Snow
+	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	@Unique
 	boolean canWalkOnPowderSnow(Entity entity) {
 		if (entity.getType().isIn(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS)) {
 			return true;
 		} else {
-			return entity instanceof LivingEntity && ((LivingEntity) entity).getEquippedStack(EquipmentSlot.FEET).isOf(Items.LEATHER_BOOTS);
+			return entity instanceof LivingEntity && canBootsResistFrost(((LivingEntity) entity).getEquippedStack(EquipmentSlot.FEET));
 		}
+	}
+
+	// Checks if boots are made of leather or enchanted with Frost Walker
+	@Unique
+	boolean canBootsResistFrost(ItemStack bootsToCheck){
+		if (bootsToCheck.isOf(Items.LEATHER_BOOTS)){
+			return true;
+		} return EnchantmentHelper.getLevel(Enchantments.FROST_WALKER, bootsToCheck) != 0;
 	}
 
 }
