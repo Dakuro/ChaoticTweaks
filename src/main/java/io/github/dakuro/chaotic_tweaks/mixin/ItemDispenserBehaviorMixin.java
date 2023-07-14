@@ -1,6 +1,6 @@
-package io.github.dakuro.modding_training.mixin;
+package io.github.dakuro.chaotic_tweaks.mixin;
 
-import io.github.dakuro.modding_training.CauldronDispenserUtils;
+import io.github.dakuro.chaotic_tweaks.CauldronDispenserUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;
 import net.minecraft.block.entity.DispenserBlockEntity;

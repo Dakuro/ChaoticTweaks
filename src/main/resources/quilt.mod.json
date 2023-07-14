@@ -2,34 +2,34 @@
 	"schema_version": 1,
 	"quilt_loader": {
 		"group": "io.github.dakuro",
-		"id": "modding_training",
+		"id": "chaotic_tweaks",
 		"version": "${version}",
 		"metadata": {
-			"name": "Modding Training",
-			"description": "A mod I developed as a training for myself.",
+			"name": "Chaotic Tweaks",
+			"description": "A bundle mod filled with chaotic ideas.",
 			"contributors": {
 				"Dakuro": "Author"
 			},
 			"contact": {
 				"homepage": "https://dakuro.github.io/",
-				"issues": "https://github.com/Dakuro/modding-training/issues",
-				"sources": "https://github.com/Dakuro/modding-training"
+				"issues": "https://github.com/Dakuro/ChaoticTweaks/issues",
+				"sources": "https://github.com/Dakuro/ChaoticTweaks"
 			},
-			"icon": "assets/modding_training/icon.png",
+			"icon": "assets/chaotic_tweaks/icon.png",
 			"license": "MIT"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "io.github.dakuro.modding_training.ModdingTraining"
+			"init": "io.github.dakuro.chaotic_tweaks.ChaoticTweaks"
 		},
 		"depends": [
 			{
 				"id": "quilt_loader",
-				"versions": ">=0.20.0-beta.2"
+				"versions": ">=0.20.0-beta.3"
 			},
 			{
 				"id": "quilted_fabric_api",
-				"versions": ">=7.0.5"
+				"versions": ">=7.0.6"
 			},
 			{
 				"id": "minecraft",
@@ -37,5 +37,5 @@
 			}
 		]
 	},
-	"mixin": "modding_training.mixins.json"
+	"mixin": "chaotic_tweaks.mixins.json"
 }

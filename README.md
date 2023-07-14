@@ -1,14 +1,8 @@
-# Modding Training
+# Chaotic Tweaks
 
-This mod is a bundle of things I created as a training for myself, to try to familiarize with the Quilt mod loader.
+Enjoy this bundle mod filled with my chaotic ideas!
 
-## Warning
-
-Everything here is made for fun and learning, so some features might be broken!
-
-Also, don't expect me updating this mod to all latest Minecraft versions nor providing support.
-
-I only use the Quilt mod loader and I don't have to justify this choice.
+DISCLAIMER: I only use the Quilt mod loader and I don't have to justify this choice.
 
 ## License
 
@@ -16,4 +10,4 @@ This mod is licensed under the MIT License, meaning you are free to update it (o
 or even port it to a different mod loader if you want to!
 
 
-You just need to make sure to credit me and any other person involved in the parts of code you use.
+You just need to make sure you credit me and any other person involved in the parts of code you use.

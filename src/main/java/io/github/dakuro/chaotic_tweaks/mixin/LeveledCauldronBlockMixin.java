@@ -1,4 +1,4 @@
-package io.github.dakuro.modding_training.mixin;
+package io.github.dakuro.chaotic_tweaks.mixin;
 
 import net.minecraft.block.AbstractCauldronBlock;
 import net.minecraft.block.LeveledCauldronBlock;

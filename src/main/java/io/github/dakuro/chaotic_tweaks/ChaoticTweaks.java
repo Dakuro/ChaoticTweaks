@@ -1,17 +1,17 @@
-package io.github.dakuro.modding_training;
+package io.github.dakuro.chaotic_tweaks;
 
-import io.github.dakuro.modding_training.init.ModItems;
+import io.github.dakuro.chaotic_tweaks.init.ModItems;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ModdingTraining implements ModInitializer {
+public class ChaoticTweaks implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod name as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger("Modding Training");
-	public static final String MOD_ID = "modding_training";
+	public static final Logger LOGGER = LoggerFactory.getLogger("Chaotic Tweaks");
+	public static final String MOD_ID = "chaotic_tweaks";
 
 	@Override
 	public void onInitialize(ModContainer mod) {

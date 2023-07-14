@@ -1,6 +1,6 @@
-package io.github.dakuro.modding_training.init;
+package io.github.dakuro.chaotic_tweaks.init;
 
-import io.github.dakuro.modding_training.ModdingTraining;
+import io.github.dakuro.chaotic_tweaks.ChaoticTweaks;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -15,7 +15,7 @@ public interface ModItems {
 	// Declare items here
 
 	private static <T extends Item> T createItem(String name, T item) {
-		ITEMS.put(item, new Identifier(ModdingTraining.MOD_ID, name));
+		ITEMS.put(item, new Identifier(ChaoticTweaks.MOD_ID, name));
 		return item;
 	}
 
