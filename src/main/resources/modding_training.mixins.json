@@ -3,10 +3,12 @@
   "minVersion": "0.8",
   "package": "io.github.dakuro.modding_training.mixin",
   "compatibilityLevel": "JAVA_17",
-  "mixins": [],
-  "client": [
-    "ItemDispenserBehaviorMixin"
+  "mixins": [
+    "ItemDispenserBehaviorMixin",
+    "LeveledCauldronBlockMixin",
+    "PowderSnowCauldronBlockMixin"
   ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
 	}
