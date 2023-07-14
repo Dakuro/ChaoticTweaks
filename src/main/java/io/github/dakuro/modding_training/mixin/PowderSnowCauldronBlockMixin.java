@@ -27,11 +27,11 @@ public abstract class PowderSnowCauldronBlockMixin extends LeveledCauldronBlockM
 					world.addParticle(
 						ParticleTypes.SNOWFLAKE,
 						entity.getX(),
-						(double)(pos.getY() + 1),
+						pos.getY() + 1,
 						entity.getZ(),
-						(double)(MathHelper.nextBetween(randomGenerator, -1.0F, 1.0F) * 0.083333336F),
+						MathHelper.nextBetween(randomGenerator, -1.0F, 1.0F) * 0.083333336F,
 						0.05F,
-						(double)(MathHelper.nextBetween(randomGenerator, -1.0F, 1.0F) * 0.083333336F)
+						MathHelper.nextBetween(randomGenerator, -1.0F, 1.0F) * 0.083333336F
 					);
 				}
 			}
