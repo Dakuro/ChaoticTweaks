@@ -13,23 +13,23 @@ import net.minecraft.util.Identifier;
 import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 
 @SuppressWarnings("UnstableApiUsage")
-public interface ModItems {
+public class ModItems {
 
 	// Declare items here
-	Item TEST_ITEM = createItem("test_item", new Item(new QuiltItemSettings()), ItemGroups.TOOLS_AND_UTILITIES, "before", Items.WOODEN_SHOVEL);
+	public static final Item TEST_ITEM = createItem("test_item", new Item(new QuiltItemSettings()), ItemGroups.TOOLS_AND_UTILITIES, "before", Items.WOODEN_SHOVEL);
 
-	static Item createItem(String name, Item item) {
+	public static Item createItem(String name, Item item) {
 		Registry.register(Registries.ITEM, new Identifier(ChaoticTweaks.MOD_ID, name), item);
 		return item;
 	}
 
-	static Item createItem(String name, Item item, RegistryKey<ItemGroup> group) {
+	public static Item createItem(String name, Item item, RegistryKey<ItemGroup> group) {
 		Registry.register(Registries.ITEM, new Identifier(ChaoticTweaks.MOD_ID, name), item);
 		addItemGroup(group, entries -> entries.addItem(item));
 		return item;
 	}
 
-	static Item createItem(String name, Item item, RegistryKey<ItemGroup> group, String position, Item neighbor) {
+	public static Item createItem(String name, Item item, RegistryKey<ItemGroup> group, String position, Item neighbor) {
 		Registry.register(Registries.ITEM, new Identifier(ChaoticTweaks.MOD_ID, name), item);
 		switch (position) {
 			case "before" -> addItemGroup(group, entries -> entries.addBefore(neighbor, item));
@@ -38,11 +38,11 @@ public interface ModItems {
 		return item;
 	}
 
-	static void addItemGroup(RegistryKey<ItemGroup> group, ItemGroupEvents.ModifyEntries entries){
+	public static void addItemGroup(RegistryKey<ItemGroup> group, ItemGroupEvents.ModifyEntries entries){
 		ItemGroupEvents.modifyEntriesEvent(group).register(entries);
 	}
 
-	static void initialize() {
+	public static void initialize() {
 
 	}
 }
