@@ -1,6 +1,6 @@
 package io.github.dakuro.chaotic_tweaks.mixin;
 
-import io.github.dakuro.chaotic_tweaks.CauldronDispenserUtils;
+import io.github.dakuro.chaotic_tweaks.imixin.ICauldronDispenser;
 import net.minecraft.block.*;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;
 import net.minecraft.block.entity.DispenserBlockEntity;
@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ItemDispenserBehavior.class)
-public abstract class ItemDispenserBehaviorMixin implements CauldronDispenserUtils {
+public abstract class ItemDispenserBehaviorMixin implements ICauldronDispenser {
 
 	@Inject(at = @At("HEAD"), method = "dispenseSilently", cancellable = true)
 	public void CauldronMixin(BlockPointer pointer, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
@@ -43,12 +43,12 @@ public abstract class ItemDispenserBehaviorMixin implements CauldronDispenserUti
 
 		// Handles buckets on full cauldrons
 		if (item == Items.BUCKET) {
-			if (CauldronDispenserUtils.GetCauldronLevel(block_state) != CauldronLevel.FULL) {
+			if (ICauldronDispenser.GetCauldronLevel(block_state) != CauldronLevel.FULL) {
 				return;
 			}
 
 			world.setBlockState(pos, Blocks.CAULDRON.getDefaultState());
-			ItemStack bucket = new ItemStack(CauldronDispenserUtils.CauldronToBucket.getOrDefault(block_state.getBlock(), Items.AIR));
+			ItemStack bucket = new ItemStack(ICauldronDispenser.CauldronToBucket.getOrDefault(block_state.getBlock(), Items.AIR));
 
 			if (HandleDispense(stack, bucket, dispenser, cir)) {
 				customDispenseSilently(pointer, bucket);
@@ -56,12 +56,12 @@ public abstract class ItemDispenserBehaviorMixin implements CauldronDispenserUti
 
 			// Handles empty bottles on partly or full cauldrons
 		} else if (item == Items.GLASS_BOTTLE) {
-			if (!CauldronDispenserUtils.CauldronToBottle.containsKey(block)) {
+			if (!ICauldronDispenser.CauldronToBottle.containsKey(block)) {
 				return;
 			}
 
-			world.setBlockState(pos, CauldronDispenserUtils.NewCauldronBottleLevel(block, block_state, false));
-			ItemStack bottle = CauldronDispenserUtils.CauldronToBottle.get(block);
+			world.setBlockState(pos, ICauldronDispenser.NewCauldronBottleLevel(block, block_state, false));
+			ItemStack bottle = ICauldronDispenser.CauldronToBottle.get(block);
 			bottle.setCount(1);
 
 			if (HandleDispense(stack, bottle, dispenser, cir)) {
@@ -69,19 +69,19 @@ public abstract class ItemDispenserBehaviorMixin implements CauldronDispenserUti
 			}
 
 			// Fills a cauldron with the bucket contents regardless of cauldron type and level (Vanilla Mechanic)
-		} else if (CauldronDispenserUtils.BucketToCauldron.containsKey(item)) {
+		} else if (ICauldronDispenser.BucketToCauldron.containsKey(item)) {
 			cir.setReturnValue(new ItemStack(Items.BUCKET));
-			world.setBlockState(pos, (BlockState) CauldronDispenserUtils.BucketToCauldron.get(item).get("block_state"));
+			world.setBlockState(pos, (BlockState) ICauldronDispenser.BucketToCauldron.get(item).get("block_state"));
 
 			// Fills cauldron by 1 with filled bottle
-		} else if (CauldronDispenserUtils.ValidBottle(stack)) {
-			if (CauldronDispenserUtils.GetCauldronLevel(block_state) == CauldronLevel.FULL) {
+		} else if (ICauldronDispenser.ValidBottle(stack)) {
+			if (ICauldronDispenser.GetCauldronLevel(block_state) == CauldronLevel.FULL) {
 				return;
 			}
 
 			assert stack.getNbt() != null;
-			Block cauldron_type = (Block) CauldronDispenserUtils.BottleToCauldron.get(stack.getNbt().getString("Potion")).get("block");
-			world.setBlockState(pos, CauldronDispenserUtils.NewCauldronBottleLevel(cauldron_type, block_state, true));
+			Block cauldron_type = (Block) ICauldronDispenser.BottleToCauldron.get(stack.getNbt().getString("Potion")).get("block");
+			world.setBlockState(pos, ICauldronDispenser.NewCauldronBottleLevel(cauldron_type, block_state, true));
 			if (HandleDispense(stack, new ItemStack(Items.GLASS_BOTTLE), dispenser, cir)) {
 				customDispenseSilently(pointer, new ItemStack(Items.GLASS_BOTTLE));
 			}

@@ -1,4 +1,4 @@
-package io.github.dakuro.chaotic_tweaks;
+package io.github.dakuro.chaotic_tweaks.imixin;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -12,7 +12,7 @@ import net.minecraft.state.property.Properties;
 import java.util.HashMap;
 import java.util.Map;
 
-public interface CauldronDispenserUtils {
+public interface ICauldronDispenser {
 
 	// Map of BucketItems that can be put inside a cauldron
 	HashMap<Item, HashMap<String, Object>> BucketToCauldron = new HashMap<>() {
