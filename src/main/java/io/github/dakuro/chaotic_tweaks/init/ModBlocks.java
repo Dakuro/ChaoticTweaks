@@ -17,9 +17,9 @@ import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 
 public class ModBlocks {
 
-//	Block MOD_BLOCK = createBlock("mod_block", new ModBlock(QuiltBlockSettings.of(Material.METAL, MapColor.DEEPSLATE_GRAY).strength(-1.0F, 3600000.0F).sounds(BlockSoundGroup.COPPER)), true);
-	public static final Block TEST = createBlock("test", new ShaulkronBlock(QuiltBlockSettings.copyOf(Blocks.ANVIL)), new QuiltItemSettings(), ItemGroups.FUNCTIONAL_BLOCKS);
-	public static final Block TEST2 = createBlock("test2", new ShaulkronBlock(QuiltBlockSettings.copyOf(Blocks.ANVIL)), new QuiltItemSettings(), ItemGroups.FUNCTIONAL_BLOCKS, "after", Blocks.ANVIL.asItem());
+	// Block MOD_BLOCK = createBlock("mod_block", new ModBlock(QuiltBlockSettings.of(Material.METAL, MapColor.DEEPSLATE_GRAY).strength(-1.0F, 3600000.0F).sounds(BlockSoundGroup.COPPER)), true);
+	// public static final Block TEST = createBlock("test", new ShaulkronBlock(QuiltBlockSettings.copyOf(Blocks.ANVIL)), new QuiltItemSettings(), ItemGroups.FUNCTIONAL_BLOCKS);
+	// public static final Block TEST2 = createBlock("test2", new ShaulkronBlock(QuiltBlockSettings.copyOf(Blocks.ANVIL)), new QuiltItemSettings(), ItemGroups.FUNCTIONAL_BLOCKS, "after", Blocks.ANVIL.asItem());
 
 	public static Block createBlock(String name, Block block) {
 		Registry.register(Registries.BLOCK, new Identifier(ChaoticTweaks.MOD_ID, name), block);

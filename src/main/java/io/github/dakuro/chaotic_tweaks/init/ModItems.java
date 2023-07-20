@@ -16,7 +16,7 @@ import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 public class ModItems {
 
 	// Declare items here
-	public static final Item TEST_ITEM = createItem("test_item", new Item(new QuiltItemSettings()), ItemGroups.TOOLS_AND_UTILITIES, "before", Items.WOODEN_SHOVEL);
+	// public static final Item TEST_ITEM = createItem("test_item", new Item(new QuiltItemSettings()), ItemGroups.TOOLS_AND_UTILITIES, "before", Items.WOODEN_SHOVEL);
 
 	public static Item createItem(String name, Item item) {
 		Registry.register(Registries.ITEM, new Identifier(ChaoticTweaks.MOD_ID, name), item);
