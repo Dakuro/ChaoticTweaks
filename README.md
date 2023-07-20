@@ -2,7 +2,7 @@
 
 Enjoy this bundle mod filled with my chaotic ideas!
 
-DISCLAIMER: I only use the Quilt mod loader and I don't have to justify this choice.
+I currently only use the Quilt mod loader, it might change in the future tho.
 
 ## License
 
