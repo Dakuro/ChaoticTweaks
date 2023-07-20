@@ -1,5 +1,6 @@
 package io.github.dakuro.chaotic_tweaks;
 
+import io.github.dakuro.chaotic_tweaks.init.ModBlocks;
 import io.github.dakuro.chaotic_tweaks.init.ModItems;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
@@ -18,6 +19,7 @@ public class ChaoticTweaks implements ModInitializer {
 		LOGGER.info("Hello Quilt world from {}!", mod.metadata().name());
 
 		ModItems.initialize();
+		ModBlocks.initialize();
 	}
 
 }
